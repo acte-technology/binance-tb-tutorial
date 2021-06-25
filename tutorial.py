@@ -17,15 +17,13 @@ binance_client = BinanceClient(base_url="https://testnet.binance.vision")
 
 #Using your account:
 #Ensure API is enabled.
-
 #binance_client = BinanceClient(key="YOUR-BINANCE-KEY", secret="YOUR-BINANCE-SECRET"))
 
-
 #Get latest price
-def getAvgPrice(trade):
+def getPrice(trade):
 
     try:
-        response = binance_client.avg_price(trade)
+        response = binance_client.ticker_price(trade)
         price = response.get('price')
         print(price)
         return price
@@ -49,7 +47,7 @@ while True:
         trade = "BTCUSDT"
 
         #get price from Binance
-        price = getAvgPrice(trade)
+        price = getPrice(trade)
 
         if price != None:
             #prepare timeseries
